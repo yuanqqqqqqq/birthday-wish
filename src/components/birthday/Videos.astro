@@ -1,4 +1,9 @@
 ---
+// ===== 如何换成真实视频 =====
+// 1. 把视频放进 public/videos/ 目录（例如 video-1.mp4）
+// 2. 把下面数组每一项改成：{ src: '/videos/video-1.mp4', caption: '配文' }
+// 3. 把占位 div（class="video-placeholder"）换成：
+//    <video controls preload="metadata" playsinline class="w-full rounded-lg"><source src={v.src} type="video/mp4" /></video>
 const videos = [
   { caption: '视频占位 ①' },
   { caption: '视频占位 ②' },

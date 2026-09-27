@@ -1,4 +1,9 @@
 ---
+// ===== 如何换成真实照片 =====
+// 1. 把照片放进 public/photos/ 目录（例如 photo-1.jpg）
+// 2. 把下面数组每一项改成：{ src: '/photos/photo-1.jpg', caption: '配文' }
+// 3. 把占位 div（class="photo-placeholder"）换成：
+//    <img src={p.src} alt={p.caption} loading="lazy" class="aspect-square w-full object-cover" />
 const photos = [
   { caption: '照片占位 ①' },
   { caption: '照片占位 ②' },

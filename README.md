@@ -32,7 +32,10 @@ npm run build      # 构建到 dist/
 ## ✏️ 自定义
 
 - **称呼**：全局搜索替换 `XXX` 为祝福对象的名字
-- **照片/视频**：把你的照片放进 `public/photos/`、视频放进 `public/videos/`，然后修改 `src/components/birthday/Gallery.astro` 和 `Videos.astro` 里的引用
+- **照片**：
+  1. 把照片放进 `public/photos/` 目录（如 `photo-1.jpg`）
+  2. 打开 `src/components/birthday/Gallery.astro`，按文件顶部注释，把 `photos` 数组改成 `{ src: '/photos/photo-1.jpg', caption: '配文' }` 格式，并把占位 div 换成 `<img>`
+- **视频**：同理，视频放进 `public/videos/`，改 `src/components/birthday/Videos.astro`
 - **祝福文字**：编辑 `src/components/birthday/` 下的 `.astro` 文件
 - **配色/字体**：修改 `src/styles/global.css` 里的 `@theme` 变量
 
