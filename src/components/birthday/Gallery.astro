@@ -1,0 +1,37 @@
+---
+const photos = [
+  { caption: '照片占位 ①' },
+  { caption: '照片占位 ②' },
+  { caption: '照片占位 ③' },
+  { caption: '照片占位 ④' },
+];
+---
+
+<section class="mx-auto max-w-5xl px-6 py-28">
+  <p class="reveal chapter-tag mb-6 text-sm">第二章 · 美好瞬间</p>
+
+  <h2 class="reveal text-glow mb-4 text-center text-4xl md:text-5xl" data-annotation="underline">
+    想留住你的样子
+  </h2>
+
+  <p class="reveal mb-14 text-center font-hand text-lg text-ink-soft">
+    每一张照片，都是我想珍藏的瞬间
+  </p>
+
+  <div class="grid gap-10 sm:grid-cols-2">
+    {
+      photos.map((p, i) => (
+        <div
+          class={`reveal photo-frame block ${i % 2 === 0 ? 'rotate-[-1.6deg]' : 'rotate-[1.6deg]'}`}
+        >
+          <div class="photo-placeholder">
+            <span>🖼️</span>
+            <p>{p.caption}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="reveal mt-8 text-center font-hand text-ink-soft">把这里的占位换成你们的照片吧 ✨</p>
+</section>

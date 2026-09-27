@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Prologue from '../components/birthday/Prologue.astro';
+import BackgroundDoodles from '../components/BackgroundDoodles.astro';
+import Hero from '../components/birthday/Hero.astro';
+import Journey from '../components/birthday/Journey.astro';
+import Gallery from '../components/birthday/Gallery.astro';
+import Videos from '../components/birthday/Videos.astro';
+import Wish from '../components/birthday/Wish.astro';
+import Finale from '../components/birthday/Finale.astro';
+---
+
+<Layout
+  title="生日快乐 · XXX"
+  description="给「XXX」的生日祝福——一份手绘风格的互动礼物"
+>
+  <canvas id="particles" class="fixed inset-0 z-0 h-full w-full"></canvas>
+  <BackgroundDoodles />
+
+  <!-- 顶部进度条 -->
+  <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+
+  <main class="relative z-10">
+    <Hero />
+    <Journey />
+    <Gallery />
+    <Videos />
+    <Wish />
+    <Finale />
+  </main>
+
+  <!-- 照片放大灯箱 -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 p-6"
+  >
+    <img id="lightbox-img" class="max-h-full max-w-full rounded-lg shadow-2xl" src="" alt="" />
+  </div>
+  <Prologue />
+</Layout>

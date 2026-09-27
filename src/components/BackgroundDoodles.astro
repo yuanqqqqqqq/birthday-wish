@@ -1,0 +1,89 @@
+---
+---
+
+<div class="bg-doodles" aria-hidden="true">
+  <svg class="doodle doodle-spin doodle-sun" data-doodle="sun" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-drift doodle-cloud1" data-doodle="cloud" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-sway doodle-tree" data-doodle="tree" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-sway doodle-flower" data-doodle="flower" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-float doodle-mountain" data-doodle="mountain" viewBox="0 0 200 100"></svg>
+  <svg class="doodle doodle-float doodle-house" data-doodle="house" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-float doodle-star" data-doodle="star" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-float doodle-spiral" data-doodle="spiral" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-float doodle-heart" data-doodle="heart" viewBox="0 0 100 100"></svg>
+  <svg class="doodle doodle-float doodle-wave" data-doodle="wave" viewBox="0 0 240 40"></svg>
+</div>
+
+<script>
+  import rough from 'roughjs';
+
+  function starPoints(cx, cy, R, r) {
+    const pts = [];
+    for (let i = 0; i < 10; i++) {
+      const a = -Math.PI / 2 + (i * Math.PI) / 5;
+      const rad = i % 2 === 0 ? R : r;
+      pts.push([cx + Math.cos(a) * rad, cy + Math.sin(a) * rad]);
+    }
+    return pts;
+  }
+
+  function draw(svg, type) {
+    const rc = rough.svg(svg);
+
+    if (type === 'sun') {
+      svg.appendChild(rc.circle(50, 50, 20, { fill: '#f9d27a', fillStyle: 'solid', stroke: '#d9a04a', strokeWidth: 2, roughness: 1.4 }));
+      for (let i = 0; i < 8; i++) {
+        const a = (Math.PI * 2 * i) / 8;
+        svg.appendChild(
+          rc.line(50 + Math.cos(a) * 26, 50 + Math.sin(a) * 26, 50 + Math.cos(a) * 38, 50 + Math.sin(a) * 38, {
+            stroke: '#d9a04a', strokeWidth: 2, roughness: 1.2,
+          }),
+        );
+      }
+    } else if (type === 'cloud') {
+      const o = { fill: '#fdfaf3', fillStyle: 'solid', stroke: '#c9c2b8', strokeWidth: 2, roughness: 1.5 };
+      svg.appendChild(rc.circle(35, 62, 16, o));
+      svg.appendChild(rc.circle(52, 52, 20, o));
+      svg.appendChild(rc.circle(70, 62, 15, o));
+    } else if (type === 'tree') {
+      svg.appendChild(rc.line(50, 90, 50, 62, { stroke: '#8a6a4a', strokeWidth: 3, roughness: 1.3 }));
+      svg.appendChild(rc.circle(50, 46, 27, { fill: '#a8d8b9', fillStyle: 'hachure', stroke: '#6a9a78', strokeWidth: 2, roughness: 1.5 }));
+    } else if (type === 'flower') {
+      const petal = { fill: '#f5b8c8', fillStyle: 'solid', stroke: '#d98a9a', strokeWidth: 1.8, roughness: 1.3 };
+      svg.appendChild(rc.ellipse(50, 30, 8, 12, petal));
+      svg.appendChild(rc.ellipse(50, 70, 8, 12, petal));
+      svg.appendChild(rc.ellipse(30, 50, 12, 8, petal));
+      svg.appendChild(rc.ellipse(70, 50, 12, 8, petal));
+      svg.appendChild(rc.circle(50, 50, 8, { fill: '#f7c873', fillStyle: 'solid', stroke: '#d9a04a', strokeWidth: 1.8, roughness: 1.2 }));
+    } else if (type === 'mountain') {
+      svg.appendChild(rc.polygon([[10, 85], [70, 25], [130, 85]], { fill: '#c4d5c0', fillStyle: 'hachure', stroke: '#7a9a80', strokeWidth: 2, roughness: 1.5 }));
+      svg.appendChild(rc.polygon([[90, 85], [150, 40], [200, 85]], { fill: '#a3c5b0', fillStyle: 'cross-hatch', stroke: '#6a8a78', strokeWidth: 2, roughness: 1.5 }));
+    } else if (type === 'house') {
+      svg.appendChild(rc.rectangle(30, 45, 40, 32, { fill: '#ecd3a8', fillStyle: 'solid', stroke: '#a8805a', strokeWidth: 2, roughness: 1.3 }));
+      svg.appendChild(rc.polygon([[22, 46], [50, 24], [78, 46]], { fill: '#e8a08a', fillStyle: 'hachure', stroke: '#c0785a', strokeWidth: 2, roughness: 1.4 }));
+      svg.appendChild(rc.rectangle(46, 60, 8, 17, { fill: '#fdfaf3', fillStyle: 'solid', stroke: '#a8805a', strokeWidth: 1.5, roughness: 1 }));
+    } else if (type === 'star') {
+      svg.appendChild(rc.polygon(starPoints(50, 52, 42, 18), { fill: '#f2c14e', fillStyle: 'solid', stroke: '#c98a3b', strokeWidth: 2, roughness: 1.4 }));
+    } else if (type === 'spiral') {
+      svg.appendChild(
+        rc.curve([[50, 50], [64, 42], [72, 56], [58, 66], [46, 72], [34, 60], [44, 50], [56, 38], [76, 46], [72, 62], [68, 78]], {
+          stroke: '#b8a0d8', strokeWidth: 2.5, roughness: 1.4,
+        }),
+      );
+    } else if (type === 'heart') {
+      svg.appendChild(
+        rc.path('M50 85 C20 60 16 36 38 29 C50 26 60 36 50 46 C40 36 50 26 62 29 C84 36 78 60 50 85 Z', {
+          fill: '#e8a0b4', fillStyle: 'solid', stroke: '#c0788a', strokeWidth: 2, roughness: 1.4,
+        }),
+      );
+    } else if (type === 'wave') {
+      svg.appendChild(
+        rc.curve([[6, 22], [30, 10], [54, 22], [78, 34], [102, 22], [126, 10], [150, 22], [174, 34], [198, 22], [222, 10], [236, 20]], {
+          stroke: '#7fb08a', strokeWidth: 2.5, roughness: 1.5,
+        }),
+      );
+    }
+  }
+
+  document.querySelectorAll('[data-doodle]').forEach((svg) => draw(svg, svg.dataset.doodle));
+</script>

@@ -1,0 +1,31 @@
+---
+const videos = [
+  { caption: '视频占位 ①' },
+  { caption: '视频占位 ②' },
+];
+---
+
+<section class="mx-auto max-w-4xl px-6 py-28">
+  <p class="reveal chapter-tag mb-6 text-sm">第三章 · 光影回忆</p>
+
+  <h2 class="reveal text-glow mb-4 text-center text-4xl md:text-5xl" data-annotation="underline">
+    会流动的时光
+  </h2>
+
+  <p class="reveal mb-14 text-center font-hand text-lg text-ink-soft">
+    有些瞬间，用画面留不住，就用影像吧
+  </p>
+
+  <div class="space-y-10">
+    {
+      videos.map((v) => (
+        <figure class="glass reveal overflow-hidden p-3 md:p-4">
+          <div class="video-placeholder">
+            <span>🎬</span>
+            <p>{v.caption}</p>
+          </div>
+        </figure>
+      ))
+    }
+  </div>
+</section>
