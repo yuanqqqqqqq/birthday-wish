@@ -1,5 +1,7 @@
 # 手绘风生日祝福网站 · Hand-drawn Birthday Wish
 
+> 🌐 **在线预览（Demo）**：https://yuanqqqqqqq.github.io/birthday-wish/
+
 一个精致、独特的手绘（doodle / sketch）风格生日祝福单页网站，支持沉浸式序章动画、3D 爱心粒子、照片相册、视频回忆、吹蜡烛许愿等互动。
 
 ## ✨ 特色
